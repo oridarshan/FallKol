@@ -29,7 +29,8 @@ def checkFallen(file_path: str):
         to_append.append(np.mean(e))
     # to_append += ' true' if 'not' not in file_path else ' false'
 
-    model = joblib.load('trained_model.joblib')
+    model = keras.models.load_model('trained_model')
+    print('model loaded')
     ans = model.predict(to_append)
 
     if ans[0] > ans[1]:
@@ -40,8 +41,6 @@ def checkFallen(file_path: str):
         ans2 = 1
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    checkFallen('/Users/netan/PycharmProjects/Fallkall/fall109.wav')
+    checkFallen('Data/Audio/fall109.wav')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
